@@ -6,23 +6,30 @@ import java.util.function.Function;
 
 import org.springframework.stereotype.Component;
 
-import br.com.coppieters.score.Consecutive;
-import br.com.coppieters.score.MoreOf3Sequential;
-import br.com.coppieters.score.RepeatCharacter;
-
+import br.com.coppieters.score.decremental.Consecutive;
+import br.com.coppieters.score.decremental.MoreOf3Sequential;
+import br.com.coppieters.score.decremental.RepeatCharacter;
+import br.com.coppieters.utils.Regex;
+/**
+ *Facade responsável por implementar o conjunto de métodos de pontuação a ser removida
+ *
+ * @since 10 de jan de 2017 
+ * @author Jean Coppieters Souza <jean.coppieters@hotmail.com>
+ *
+ */
 @Component
 public class DecrementalScoreFacade {
 	
-	private Function<String,Integer> lettersOnly = s -> s.replaceAll("[a-zA-Z]", "").length() > 0 ? 0 : s.length() ;//	-n	
-	private Function<String,Integer> numbersOnly = s -> s.replaceAll("[0-9]", "").length() > 0 ? 0 : s.length() ;//	-n;//-n
+	private Function<String,Integer> lettersOnly = s -> s.replaceAll(Regex.LetterIgnoreCase.getRegex(), "").length() > 0 ? 0 : s.length() ;//	-n	
+	private Function<String,Integer> numbersOnly = s -> s.replaceAll(Regex.OnlyNumber.getRegex(), "").length() > 0 ? 0 : s.length() ;//	-n;//-n
 	
 	private Function<String,Integer> repeatCharacters = new RepeatCharacter();
-	private Function<String,Integer> consecutiveUppercaseLetters = new Consecutive("[A-Z]{2,}");//-(n*2)	
-	private Function<String,Integer> consecutiveLowercaseLetters = new Consecutive("[a-z]{2,}");//-(n*2)	
-	private Function<String,Integer> consecutiveNumbers = new Consecutive("[0-9]{2,}");//-(n*2)	
-	private Function<String,Integer> sequentialLetters = new MoreOf3Sequential("[0-9]");
-	private Function<String,Integer> sequentialNumbers = new MoreOf3Sequential("[a-zA-Z]");//-(n*3)	
-	private Function<String,Integer> sequentialSymbols = new MoreOf3Sequential("[a-zA-Z0-9]");// -(n*3)
+	private Function<String,Integer> consecutiveUppercaseLetters = new Consecutive(Regex.UpperCaseLetters);//-(n*2)	
+	private Function<String,Integer> consecutiveLowercaseLetters = new Consecutive(Regex.LowerCaseLetters);//-(n*2)	
+	private Function<String,Integer> consecutiveNumbers = new Consecutive(Regex.OnlyNumber);//-(n*2)	
+	private Function<String,Integer> sequentialLetters = new MoreOf3Sequential(Regex.OnlyNumber);
+	private Function<String,Integer> sequentialNumbers = new MoreOf3Sequential(Regex.LetterIgnoreCase);//-(n*3)	
+	private Function<String,Integer> sequentialSymbols = new MoreOf3Sequential(Regex.AllCommonCharacters);// -(n*3)
 	
 	public Function<String, Integer> getLettersOnly() {
 		return lettersOnly;

@@ -6,20 +6,27 @@ import java.util.function.Function;
 
 import org.springframework.stereotype.Component;
 
-import br.com.coppieters.score.LetterCaseParser;
-import br.com.coppieters.score.MiddleNumbersOrSymbolsFlat;
-import br.com.coppieters.score.Requirements;
-
+import br.com.coppieters.score.incremental.LetterCaseParser;
+import br.com.coppieters.score.incremental.MiddleNumbersOrSymbolsFlat;
+import br.com.coppieters.score.incremental.Requirements;
+import br.com.coppieters.utils.Regex;
+/**
+ * Facade responsável por implementar a regra de pontuação a ser incrementada
+ *
+ * @since 10 de jan de 2017 
+ * @author Jean Coppieters Souza <jean.coppieters@hotmail.com>
+ *
+ */
 @Component
 public class IncrementalScoreFacade {
 	
 	
 	private Function<String,Integer> numberOfCharacters = s -> s.length() * 4 ;	
-	private Function<String,Integer> numbers = s -> ( s.length() - s.replaceAll("[0-9]", "").length() )  * 4;
-	private Function<String,Integer> symbols = s -> s.replaceAll("[a-zA-Z0-9]","").length() * 6;	
+	private Function<String,Integer> numbers = s -> ( s.length() - s.replaceAll(Regex.OnlyNumber.getRegex(), "").length() )  * 4;
+	private Function<String,Integer> symbols = s -> s.replaceAll(Regex.AllCommonCharacters.getRegex(),"").length() * 6;	
 	
-	private Function<String,Integer> uppercaseLetters =  new LetterCaseParser("[A-Z]");	
-	private Function<String,Integer> lowercaseLetters =  new LetterCaseParser("[a-z]");	
+	private Function<String,Integer> uppercaseLetters =  new LetterCaseParser(Regex.UpperCaseLetters);	
+	private Function<String,Integer> lowercaseLetters =  new LetterCaseParser(Regex.LowerCaseLetters);	
 	private Function<String,Integer> middleNumbersOrSymbols = new MiddleNumbersOrSymbolsFlat();	
 	private Function<String,Integer> requirements = new Requirements(Arrays.asList(numberOfCharacters,uppercaseLetters,lowercaseLetters, numbers,symbols));
 

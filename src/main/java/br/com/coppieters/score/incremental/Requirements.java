@@ -1,9 +1,15 @@
-package br.com.coppieters.score;
+package br.com.coppieters.score.incremental;
 
 
 import java.util.List;
 import java.util.function.Function;
-
+/**
+ * Classe responsável por calcular se a senha antende ao mínimo de requisitos
+ *
+ * @since 10 de jan de 2017 
+ * @author Jean Coppieters Souza <jean.coppieters@hotmail.com>
+ *
+ */
 public class Requirements implements Function<String, Integer> {
 
 	private List<Function<String, Integer>> requirements;

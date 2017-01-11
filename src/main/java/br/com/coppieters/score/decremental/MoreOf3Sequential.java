@@ -1,16 +1,24 @@
-package br.com.coppieters.score;
+package br.com.coppieters.score.decremental;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import br.com.coppieters.utils.Regex;
+
+/**
+ * Classe responsável por realizar o calculo referente a existencia ou não de mais de tres caracateres de mesma natureza na senha 
+ *
+ * @since 10 de jan de 2017 
+ * @author Jean Coppieters Souza <jean.coppieters@hotmail.com>
+ */
 public class MoreOf3Sequential implements Function<String, Integer> {
 
 	private String regexToRemove;
 
-	public MoreOf3Sequential(String regexToRemove) {
-		this.regexToRemove = regexToRemove;
+	public MoreOf3Sequential(Regex regex) {
+		this.regexToRemove = regex.getRegex();
 	}
 	
 	@Override

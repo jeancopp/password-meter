@@ -15,7 +15,13 @@ import org.springframework.web.bind.annotation.RestController;
 
 import br.com.coppieters.service.ScoreApplication;
 import br.com.coppieters.utils.ResponseDtoBuilder;
-
+/**
+ * Controller responsável por expor o serviço de calculo de pontuação da senha
+ *
+ * @since 10 de jan de 2017 
+ * @author Jean Coppieters Souza <jean.coppieters@hotmail.com>
+ *
+ */
 @RestController
 @RequestMapping("/password")
 public class PasswordController {

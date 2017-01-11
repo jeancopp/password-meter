@@ -1,13 +1,21 @@
-package br.com.coppieters.score;
+package br.com.coppieters.score.incremental;
 
 import java.util.function.Function;
 
+import br.com.coppieters.utils.Regex;
+/**
+ * Classe responsável por implementar a regra de calculo para para a busca de letras de determinado case 
+ *
+ * @since 10 de jan de 2017 
+ * @author Jean Coppieters Souza <jean.coppieters@hotmail.com>
+ *
+ */
 public class LetterCaseParser implements Function<String, Integer> {
 
 	private final String REGEX_TO_FIND ;
 
-	public LetterCaseParser(String regexLetterToFind) {
-		REGEX_TO_FIND = regexLetterToFind;
+	public LetterCaseParser(Regex caseletters) {
+		REGEX_TO_FIND = caseletters.getRegex();
 	}
 	
 	@Override

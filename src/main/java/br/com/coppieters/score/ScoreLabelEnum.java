@@ -2,7 +2,13 @@ package br.com.coppieters.score;
 
 import java.util.Arrays;
 import java.util.List;
-
+/**
+ * Enumerado dos rótulos do score
+ *
+ * @since 10 de jan de 2017 
+ * @author Jean Coppieters Souza <jean.coppieters@hotmail.com>
+ *
+ */
 public enum ScoreLabelEnum {
 	TooShort(0,"Muito Curta")
 	,VeryWeak(20,"Muito Fraca")

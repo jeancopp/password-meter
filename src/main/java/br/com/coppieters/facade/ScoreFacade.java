@@ -11,7 +11,13 @@ import org.springframework.stereotype.Service;
 
 import br.com.coppieters.score.ScoreLabelEnum;
 import br.com.coppieters.service.ScoreApplication;
-
+/**
+ * Facade responsável por implementar a regra de calculo para pontuação da senha
+ *
+ * @since 10 de jan de 2017 
+ * @author Jean Coppieters Souza <jean.coppieters@hotmail.com>
+ *
+ */
 @Service
 public class ScoreFacade implements ScoreApplication<Map<String,String>>{
 
@@ -37,7 +43,7 @@ public class ScoreFacade implements ScoreApplication<Map<String,String>>{
 
 	@Override
 	public Integer calculateScore(Integer incrementalScore, Integer decrementalScore) {
-		return Math.abs(incrementalScore - decrementalScore);
+		return incrementalScore - decrementalScore;
 	}
 
 	@Override

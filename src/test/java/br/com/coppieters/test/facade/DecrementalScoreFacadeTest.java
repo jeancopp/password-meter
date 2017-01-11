@@ -63,9 +63,9 @@ public class DecrementalScoreFacadeTest {
 	@Test
 	public void temLetrasMinusculasConsecutivas(){
 		Function<String, Integer> function = facade.getConsecutiveLowercaseLetters();
-		String senha = "SEnha";
+		String senha = "aaaaaaaaaaaaaa";
 		int valor = function.apply(senha);
-		Assert.assertEquals( 4, valor);
+		Assert.assertEquals( 26, valor);
 	}
 	@Test
 	public void naoTemLetrasMinusculasConsecutivas(){

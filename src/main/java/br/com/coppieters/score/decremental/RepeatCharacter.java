@@ -1,7 +1,14 @@
-package br.com.coppieters.score;
+package br.com.coppieters.score.decremental;
 
 import java.util.function.Function;
-
+/**
+ * Classe responsável por calcular se há caracteres repetidos na senha.
+ * Calculo é particular do autor do site <http://www.passwordmeter.com/> e foi implementado de forma semelhante
+ *
+ * @since 10 de jan de 2017 
+ * @author Jean Coppieters Souza <jean.coppieters@hotmail.com>
+ *
+ */
 public class RepeatCharacter implements Function<String,Integer>{
 
 	@Override
