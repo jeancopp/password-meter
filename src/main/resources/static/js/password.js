@@ -1,13 +1,8 @@
 exec = function(evt){
-	evt.preventDefault();
-	console.log("teste");
 	var obj = {pass : $("#password").val() };
-	console.log(obj);
 	$.get("/password/score",obj,
 		  function(data){
-			console.log(data);
 			$("#score").text(data.score + "%");
-			
 			$("#complexity").text(data.complexity);
 			var css = "";
 			var score = data.score;
@@ -22,4 +17,4 @@ exec = function(evt){
 };
 
 
-$('#password').change(exec);
+$('#password').keyup(exec);
