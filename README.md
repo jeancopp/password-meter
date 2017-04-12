@@ -1,6 +1,7 @@
 # password-meter
 
 Calculo de pontuação da senha.
+
 Foi desenvolvido baseado no site: http://www.passwordmeter.com/
 Para executar, faça clone do projeto e rode via maven.
 A aplicação funciona por default na porta 8080, sendo acessada por http://localhost:8080/
@@ -17,6 +18,7 @@ O retorno da api é dado no formato:
 ```
 -----------------------------------------------------------------------------------------------------------------------------
 Password score Calculation.
+
 Was developed with base on website: http://www.passwordmeter.com/
 To execute, do clone of the project and run in with maven.
 The application will run on port 8080 by default, and will can be access in http://localhost:8080/
