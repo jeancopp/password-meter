@@ -1,8 +1,3 @@
-<<<<<<< master
-/target/
-
-\.project
-=======
 # Eclipse
 .classpath
 .project
@@ -19,4 +14,3 @@
 # Maven
 log/
 target/
->>>>>>> Correção do gitignore
