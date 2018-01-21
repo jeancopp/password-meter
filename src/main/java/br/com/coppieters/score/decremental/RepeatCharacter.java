@@ -1,5 +1,7 @@
 package br.com.coppieters.score.decremental;
 
+import org.springframework.stereotype.Component;
+
 import br.com.coppieters.score.ScoreCalculator;
 /**
  * Classe responsável por calcular se há caracteres repetidos na senha.
@@ -9,6 +11,7 @@ import br.com.coppieters.score.ScoreCalculator;
  * @author Jean Coppieters Souza <jean.coppieters@hotmail.com>
  *
  */
+@Component
 public class RepeatCharacter implements ScoreCalculator{
 
 	@Override

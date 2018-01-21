@@ -1,5 +1,7 @@
 package br.com.coppieters.score.incremental;
 
+import org.springframework.stereotype.Component;
+
 import br.com.coppieters.score.ScoreCalculator;
 import br.com.coppieters.utils.Regex;
 /**
@@ -9,6 +11,7 @@ import br.com.coppieters.utils.Regex;
  * @author Jean Coppieters Souza <jean.coppieters@hotmail.com>
  *
  */
+@Component
 public class MiddleNumbersOrSymbolsFlat implements ScoreCalculator {
 
 	@Override

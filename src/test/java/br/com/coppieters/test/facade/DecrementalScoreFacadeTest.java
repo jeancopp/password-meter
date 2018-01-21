@@ -3,19 +3,18 @@ package br.com.coppieters.test.facade;
 import java.util.function.Function;
 
 import org.junit.Assert;
-import org.junit.Before;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import br.com.coppieters.facade.DecrementalScoreFacade;
+import br.com.coppieters.test.AbstractTestConfiguration;
 
-public class DecrementalScoreFacadeTest {
+public class DecrementalScoreFacadeTest extends AbstractTestConfiguration{
 	private String senhaForte = "[Aqt3912]";
+	
+	@Autowired
 	private DecrementalScoreFacade facade;
 
-	@Before
-	public void init(){
-		facade = new DecrementalScoreFacade();
-	}
 //////////////////	
 	@Test
 	public void senhaComApenasLetras(){

@@ -59,6 +59,10 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
 					<layout>ZIP</layout>
+					<profiles>
+						<profile>dev</profile>
+						<profile>prod</profile>
+					</profiles>
 				</configuration>
 			</plugin>
 		</plugins>

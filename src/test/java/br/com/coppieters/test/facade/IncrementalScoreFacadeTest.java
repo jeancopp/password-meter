@@ -4,23 +4,22 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.function.Function;
 
-import org.junit.Before;
 import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 import br.com.coppieters.facade.IncrementalScoreFacade;
+import br.com.coppieters.test.AbstractTestConfiguration;
 
-public class IncrementalScoreFacadeTest {
+public class IncrementalScoreFacadeTest extends AbstractTestConfiguration{
 
 	private String senhaEmBranco = "";
 	private String senhaForte = "[Aqt3912]";
 	private String senhaEmCaixaAlta = "[Aqt3912]".toUpperCase();
 	private String senhaEmCaixaBaixa = "[Aqt3912]".toLowerCase();
+
+	@Autowired	
 	private IncrementalScoreFacade incrementalScore;
 
-	@Before
-	public void init(){
-		incrementalScore = new IncrementalScoreFacade();
-	}
 /////////////////////////	
 	@Test
 	public void numeroDeCaracteres(){

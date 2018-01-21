@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.com.coppieters.score.ScoreCalculator;
@@ -22,13 +23,15 @@ import br.com.coppieters.utils.Regex;
 @Component
 public class IncrementalScoreFacade {
 	
+	@Autowired
+	private MiddleNumbersOrSymbolsFlat middleNumbersOrSymbols;	
+	
 	private ScoreCalculator numberOfCharacters = SimpleIncrementalScoreCalculatorFactory.getInstance().numberOfCharactersScoreCalculator();	
 	private ScoreCalculator numbers = SimpleIncrementalScoreCalculatorFactory.getInstance().numbersScoreCalculator();
 	private ScoreCalculator symbols = SimpleIncrementalScoreCalculatorFactory.getInstance().symbolsScoreCalculator();	
 	
 	private ScoreCalculator uppercaseLetters =  new LetterCaseParser(Regex.UpperCaseLetters);	
 	private ScoreCalculator lowercaseLetters =  new LetterCaseParser(Regex.LowerCaseLetters);	
-	private ScoreCalculator middleNumbersOrSymbols = new MiddleNumbersOrSymbolsFlat();	
 	private ScoreCalculator requirements = new Requirements(Arrays.asList(numberOfCharacters,uppercaseLetters,lowercaseLetters, numbers, symbols));
 
 	public ScoreCalculator getNumberOfCharacters() {
