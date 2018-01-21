@@ -1,7 +1,6 @@
 package br.com.coppieters.score.incremental;
 
-import java.util.function.Function;
-
+import br.com.coppieters.score.ScoreCalculator;
 import br.com.coppieters.utils.Regex;
 /**
  * Classe responsável por implementar a regra de calculo para para a busca de letras de determinado case 
@@ -10,7 +9,7 @@ import br.com.coppieters.utils.Regex;
  * @author Jean Coppieters Souza <jean.coppieters@hotmail.com>
  *
  */
-public class LetterCaseParser implements Function<String, Integer> {
+public class LetterCaseParser implements ScoreCalculator {
 
 	private final String REGEX_TO_FIND ;
 

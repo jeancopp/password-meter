@@ -1,7 +1,6 @@
 package br.com.coppieters.score.incremental;
 
-import java.util.function.Function;
-
+import br.com.coppieters.score.ScoreCalculator;
 import br.com.coppieters.utils.Regex;
 /**
  * Classe responsável por realizar o calculo referente se há ou não simbolos e numeros no meio da senha
@@ -10,7 +9,7 @@ import br.com.coppieters.utils.Regex;
  * @author Jean Coppieters Souza <jean.coppieters@hotmail.com>
  *
  */
-public class MiddleNumbersOrSymbolsFlat implements Function<String, Integer> {
+public class MiddleNumbersOrSymbolsFlat implements ScoreCalculator {
 
 	@Override
 	public Integer apply(String p) {

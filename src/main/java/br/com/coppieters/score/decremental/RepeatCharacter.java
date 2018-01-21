@@ -1,6 +1,6 @@
 package br.com.coppieters.score.decremental;
 
-import java.util.function.Function;
+import br.com.coppieters.score.ScoreCalculator;
 /**
  * Classe responsável por calcular se há caracteres repetidos na senha.
  * Calculo é particular do autor do site <http://www.passwordmeter.com/> e foi implementado de forma semelhante
@@ -9,7 +9,7 @@ import java.util.function.Function;
  * @author Jean Coppieters Souza <jean.coppieters@hotmail.com>
  *
  */
-public class RepeatCharacter implements Function<String,Integer>{
+public class RepeatCharacter implements ScoreCalculator{
 
 	@Override
 	public Integer apply(String senha) {

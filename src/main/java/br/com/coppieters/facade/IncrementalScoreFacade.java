@@ -6,9 +6,11 @@ import java.util.function.Function;
 
 import org.springframework.stereotype.Component;
 
+import br.com.coppieters.score.ScoreCalculator;
 import br.com.coppieters.score.incremental.LetterCaseParser;
 import br.com.coppieters.score.incremental.MiddleNumbersOrSymbolsFlat;
 import br.com.coppieters.score.incremental.Requirements;
+import br.com.coppieters.score.incremental.SimpleIncrementalScoreCalculatorFactory;
 import br.com.coppieters.utils.Regex;
 /**
  * Facade responsável por implementar a regra de pontuação a ser incrementada
@@ -20,41 +22,40 @@ import br.com.coppieters.utils.Regex;
 @Component
 public class IncrementalScoreFacade {
 	
+	private ScoreCalculator numberOfCharacters = SimpleIncrementalScoreCalculatorFactory.getInstance().numberOfCharactersScoreCalculator();	
+	private ScoreCalculator numbers = SimpleIncrementalScoreCalculatorFactory.getInstance().numbersScoreCalculator();
+	private ScoreCalculator symbols = SimpleIncrementalScoreCalculatorFactory.getInstance().symbolsScoreCalculator();	
 	
-	private Function<String,Integer> numberOfCharacters = s -> s.length() * 4 ;	
-	private Function<String,Integer> numbers = s -> ( s.length() - s.replaceAll(Regex.OnlyNumber.getRegex(), "").length() )  * 4;
-	private Function<String,Integer> symbols = s -> s.replaceAll(Regex.AllCommonCharacters.getRegex(),"").length() * 6;	
-	
-	private Function<String,Integer> uppercaseLetters =  new LetterCaseParser(Regex.UpperCaseLetters);	
-	private Function<String,Integer> lowercaseLetters =  new LetterCaseParser(Regex.LowerCaseLetters);	
-	private Function<String,Integer> middleNumbersOrSymbols = new MiddleNumbersOrSymbolsFlat();	
-	private Function<String,Integer> requirements = new Requirements(Arrays.asList(numberOfCharacters,uppercaseLetters,lowercaseLetters, numbers,symbols));
+	private ScoreCalculator uppercaseLetters =  new LetterCaseParser(Regex.UpperCaseLetters);	
+	private ScoreCalculator lowercaseLetters =  new LetterCaseParser(Regex.LowerCaseLetters);	
+	private ScoreCalculator middleNumbersOrSymbols = new MiddleNumbersOrSymbolsFlat();	
+	private ScoreCalculator requirements = new Requirements(Arrays.asList(numberOfCharacters,uppercaseLetters,lowercaseLetters, numbers, symbols));
 
-	public Function<String, Integer> getNumberOfCharacters() {
+	public ScoreCalculator getNumberOfCharacters() {
 		return numberOfCharacters;
 	}
 
-	public Function<String, Integer> getUppercaseLetters() {
+	public ScoreCalculator getUppercaseLetters() {
 		return uppercaseLetters;
 	}
 
-	public Function<String, Integer> getLowercaseLetters() {
+	public ScoreCalculator getLowercaseLetters() {
 		return lowercaseLetters;
 	}
 
-	public Function<String, Integer> getNumbers() {
+	public ScoreCalculator getNumbers() {
 		return numbers;
 	}
 
-	public Function<String, Integer> getSymbols() {
+	public ScoreCalculator getSymbols() {
 		return symbols;
 	}
 
-	public Function<String, Integer> getMiddleNumbersOrSymbols() {
+	public ScoreCalculator getMiddleNumbersOrSymbols() {
 		return middleNumbersOrSymbols;
 	}
 
-	public Function<String, Integer> getRequirements() {
+	public ScoreCalculator getRequirements() {
 		return requirements;
 	}
 
