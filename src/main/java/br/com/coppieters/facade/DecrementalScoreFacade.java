@@ -4,6 +4,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.com.coppieters.score.ScoreCalculator;
@@ -21,11 +22,12 @@ import br.com.coppieters.utils.Regex;
  */
 @Component
 public class DecrementalScoreFacade {
+	@Autowired
+	private RepeatCharacter repeatCharacters;
 	
 	private ScoreCalculator lettersOnly = SimpleDescrementalScoreCalculatorFactory.getInstance().LetterOnlyScoreCalculator();	
 	private ScoreCalculator numbersOnly = SimpleDescrementalScoreCalculatorFactory.getInstance().NumbersOnlyScoreCalculator();
 	
-	private ScoreCalculator repeatCharacters = new RepeatCharacter();
 	private ScoreCalculator consecutiveUppercaseLetters = new Consecutive(Regex.UpperCaseLetters);//-(n*2)	
 	private ScoreCalculator consecutiveLowercaseLetters = new Consecutive(Regex.LowerCaseLetters);//-(n*2)	
 	private ScoreCalculator consecutiveNumbers = new Consecutive(Regex.OnlyNumber);//-(n*2)	
