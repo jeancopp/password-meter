@@ -6,6 +6,7 @@ import java.util.function.Function;
 
 import org.springframework.stereotype.Component;
 
+import br.com.coppieters.score.ScoreCalculator;
 import br.com.coppieters.score.decremental.Consecutive;
 import br.com.coppieters.score.decremental.MoreOf3Sequential;
 import br.com.coppieters.score.decremental.RepeatCharacter;
@@ -20,16 +21,16 @@ import br.com.coppieters.utils.Regex;
 @Component
 public class DecrementalScoreFacade {
 	
-	private Function<String,Integer> lettersOnly = s -> s.replaceAll(Regex.LetterIgnoreCase.getRegex(), "").length() > 0 ? 0 : s.length() ;//	-n	
-	private Function<String,Integer> numbersOnly = s -> s.replaceAll(Regex.OnlyNumber.getRegex(), "").length() > 0 ? 0 : s.length() ;//	-n;//-n
+	private ScoreCalculator lettersOnly = s -> s.replaceAll(Regex.LetterIgnoreCase.getRegex(), "").length() > 0 ? 0 : s.length() ;//	-n	
+	private ScoreCalculator numbersOnly = s -> s.replaceAll(Regex.OnlyNumber.getRegex(), "").length() > 0 ? 0 : s.length() ;//	-n;//-n
 	
-	private Function<String,Integer> repeatCharacters = new RepeatCharacter();
-	private Function<String,Integer> consecutiveUppercaseLetters = new Consecutive(Regex.UpperCaseLetters);//-(n*2)	
-	private Function<String,Integer> consecutiveLowercaseLetters = new Consecutive(Regex.LowerCaseLetters);//-(n*2)	
-	private Function<String,Integer> consecutiveNumbers = new Consecutive(Regex.OnlyNumber);//-(n*2)	
-	private Function<String,Integer> sequentialLetters = new MoreOf3Sequential(Regex.OnlyNumber);
-	private Function<String,Integer> sequentialNumbers = new MoreOf3Sequential(Regex.LetterIgnoreCase);//-(n*3)	
-	private Function<String,Integer> sequentialSymbols = new MoreOf3Sequential(Regex.AllCommonCharacters);// -(n*3)
+	private ScoreCalculator repeatCharacters = new RepeatCharacter();
+	private ScoreCalculator consecutiveUppercaseLetters = new Consecutive(Regex.UpperCaseLetters);//-(n*2)	
+	private ScoreCalculator consecutiveLowercaseLetters = new Consecutive(Regex.LowerCaseLetters);//-(n*2)	
+	private ScoreCalculator consecutiveNumbers = new Consecutive(Regex.OnlyNumber);//-(n*2)	
+	private ScoreCalculator sequentialLetters = new MoreOf3Sequential(Regex.OnlyNumber);
+	private ScoreCalculator sequentialNumbers = new MoreOf3Sequential(Regex.LetterIgnoreCase);//-(n*3)	
+	private ScoreCalculator sequentialSymbols = new MoreOf3Sequential(Regex.AllCommonCharacters);// -(n*3)
 	
 	public Function<String, Integer> getLettersOnly() {
 		return lettersOnly;

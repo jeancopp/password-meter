@@ -1,7 +1,6 @@
 package br.com.coppieters.score.decremental;
 
-import java.util.function.Function;
-
+import br.com.coppieters.score.ScoreCalculator;
 import br.com.coppieters.utils.Regex;
 /**
  * Classe responsável por implementar a regra calculo de pontuação para caracteres consecutivos
@@ -10,7 +9,7 @@ import br.com.coppieters.utils.Regex;
  * @author Jean Coppieters Souza <jean.coppieters@hotmail.com>
  *
  */
-public class Consecutive implements Function<String, Integer> {
+public class Consecutive implements ScoreCalculator {
 
 	private final String regex;
 

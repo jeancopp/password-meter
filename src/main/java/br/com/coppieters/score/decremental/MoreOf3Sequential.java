@@ -2,9 +2,9 @@ package br.com.coppieters.score.decremental;
 
 import java.util.Arrays;
 import java.util.List;
-import java.util.function.Function;
 import java.util.stream.Collectors;
 
+import br.com.coppieters.score.ScoreCalculator;
 import br.com.coppieters.utils.Regex;
 
 /**
@@ -13,7 +13,7 @@ import br.com.coppieters.utils.Regex;
  * @since 10 de jan de 2017 
  * @author Jean Coppieters Souza <jean.coppieters@hotmail.com>
  */
-public class MoreOf3Sequential implements Function<String, Integer> {
+public class MoreOf3Sequential implements ScoreCalculator {
 
 	private String regexToRemove;
 
