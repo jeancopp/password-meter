@@ -10,6 +10,7 @@ import br.com.coppieters.score.ScoreCalculator;
 import br.com.coppieters.score.decremental.Consecutive;
 import br.com.coppieters.score.decremental.MoreOf3Sequential;
 import br.com.coppieters.score.decremental.RepeatCharacter;
+import br.com.coppieters.score.decremental.SimpleDescrementalScoreCalculatorFactory;
 import br.com.coppieters.utils.Regex;
 /**
  *Facade responsável por implementar o conjunto de métodos de pontuação a ser removida
@@ -21,8 +22,8 @@ import br.com.coppieters.utils.Regex;
 @Component
 public class DecrementalScoreFacade {
 	
-	private ScoreCalculator lettersOnly = s -> s.replaceAll(Regex.LetterIgnoreCase.getRegex(), "").length() > 0 ? 0 : s.length() ;//	-n	
-	private ScoreCalculator numbersOnly = s -> s.replaceAll(Regex.OnlyNumber.getRegex(), "").length() > 0 ? 0 : s.length() ;//	-n;//-n
+	private ScoreCalculator lettersOnly = SimpleDescrementalScoreCalculatorFactory.getInstance().LetterOnlyScoreCalculator();	
+	private ScoreCalculator numbersOnly = SimpleDescrementalScoreCalculatorFactory.getInstance().NumbersOnlyScoreCalculator();
 	
 	private ScoreCalculator repeatCharacters = new RepeatCharacter();
 	private ScoreCalculator consecutiveUppercaseLetters = new Consecutive(Regex.UpperCaseLetters);//-(n*2)	
@@ -32,33 +33,34 @@ public class DecrementalScoreFacade {
 	private ScoreCalculator sequentialNumbers = new MoreOf3Sequential(Regex.LetterIgnoreCase);//-(n*3)	
 	private ScoreCalculator sequentialSymbols = new MoreOf3Sequential(Regex.AllCommonCharacters);// -(n*3)
 	
-	public Function<String, Integer> getLettersOnly() {
+	public ScoreCalculator getLettersOnly() {
 		return lettersOnly;
 	}
-	public Function<String, Integer> getNumbersOnly() {
+	public ScoreCalculator getNumbersOnly() {
 		return numbersOnly;
 	}
-	public Function<String, Integer> getRepeatCharacters() {
+	public ScoreCalculator getRepeatCharacters() {
 		return repeatCharacters;
 	}
-	public Function<String, Integer> getConsecutiveUppercaseLetters() {
+	public ScoreCalculator getConsecutiveUppercaseLetters() {
 		return consecutiveUppercaseLetters;
 	}
-	public Function<String, Integer> getConsecutiveLowercaseLetters() {
+	public ScoreCalculator getConsecutiveLowercaseLetters() {
 		return consecutiveLowercaseLetters;
 	}
-	public Function<String, Integer> getConsecutiveNumbers() {
+	public ScoreCalculator getConsecutiveNumbers() {
 		return consecutiveNumbers;
 	}
-	public Function<String, Integer> getSequentialLetters() {
+	public ScoreCalculator getSequentialLetters() {
 		return sequentialLetters;
 	}
-	public Function<String, Integer> getSequentialNumbers() {
+	public ScoreCalculator getSequentialNumbers() {
 		return sequentialNumbers;
 	}
-	public Function<String, Integer> getSequentialSymbols() {
+	public ScoreCalculator getSequentialSymbols() {
 		return sequentialSymbols;
 	}
+	
 	public List<Function<String, Integer>> getAll() {
 		return Arrays.asList(getLettersOnly()
 				,getNumbersOnly()
