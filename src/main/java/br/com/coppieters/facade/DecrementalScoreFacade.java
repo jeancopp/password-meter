@@ -4,14 +4,16 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.function.Function;
 
+import javax.annotation.Resource;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 import br.com.coppieters.score.ScoreCalculator;
 import br.com.coppieters.score.decremental.Consecutive;
+import br.com.coppieters.score.decremental.LetterOnly;
 import br.com.coppieters.score.decremental.MoreOf3Sequential;
 import br.com.coppieters.score.decremental.RepeatCharacter;
-import br.com.coppieters.score.decremental.SimpleDescrementalScoreCalculatorFactory;
 import br.com.coppieters.utils.Regex;
 /**
  *Facade responsável por implementar o conjunto de métodos de pontuação a ser removida
@@ -25,8 +27,12 @@ public class DecrementalScoreFacade {
 	@Autowired
 	private RepeatCharacter repeatCharacters;
 	
-	private ScoreCalculator lettersOnly = SimpleDescrementalScoreCalculatorFactory.getInstance().LetterOnlyScoreCalculator();	
-	private ScoreCalculator numbersOnly = SimpleDescrementalScoreCalculatorFactory.getInstance().NumbersOnlyScoreCalculator();
+	@Autowired
+	//@Resource(name="${calculator.score.letter.only}")
+	private LetterOnly lettersOnly;	
+	
+	@Resource(name="${calculator.score.number.only}")
+	private ScoreCalculator numbersOnly;
 	
 	private ScoreCalculator consecutiveUppercaseLetters = new Consecutive(Regex.UpperCaseLetters);//-(n*2)	
 	private ScoreCalculator consecutiveLowercaseLetters = new Consecutive(Regex.LowerCaseLetters);//-(n*2)	

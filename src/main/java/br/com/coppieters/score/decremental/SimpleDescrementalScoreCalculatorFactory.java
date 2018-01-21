@@ -1,24 +1,30 @@
 package br.com.coppieters.score.decremental;
 
+import org.apache.log4j.Logger;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
 import br.com.coppieters.score.ScoreCalculator;
 import br.com.coppieters.utils.Regex;
 
+@Configuration
 public class SimpleDescrementalScoreCalculatorFactory {
-	
-	public ScoreCalculator LetterOnlyScoreCalculator(){
-		return s -> s.replaceAll(Regex.LetterIgnoreCase.getRegex(), "").length() > 0 ? 0 : s.length() ;//	-n	
-	}
-	
-	public ScoreCalculator NumbersOnlyScoreCalculator(){
-		return s -> s.replaceAll(Regex.OnlyNumber.getRegex(), "").length() > 0 ? 0 : s.length();
+	private final Logger LOG = Logger.getLogger(getClass());
+
+	@Bean(name = "AmericanNumbersOnlyScoreCalculator")
+	public ScoreCalculator AmericanNumbersOnlyScoreCalculator(){
+		return s -> {
+			LOG.info("Usando o AmericanNumbersOnlyScoreCalculator");
+			return s.replaceAll(Regex.OnlyNumber.getRegex(), "").length() > 0 ? 0 : s.length();
+		};
 	}
 
-	private static SimpleDescrementalScoreCalculatorFactory instance;
-	public static SimpleDescrementalScoreCalculatorFactory getInstance(){
-		if( null == instance )
-			instance = new SimpleDescrementalScoreCalculatorFactory();
-		return instance;
+	@Bean(name = "CanadianNumbersOnlyScoreCalculator")
+	public ScoreCalculator CanadianNumbersOnlyScoreCalculator(){
+		return s -> {
+			LOG.info("Usando o CanadianNumbersOnlyScoreCalculator");
+			return s.replaceAll(Regex.OnlyNumber.getRegex(), "").length() > 0 ? 0 : s.length();
+		};
 	}
-	
-	private SimpleDescrementalScoreCalculatorFactory(){}
+
 }
