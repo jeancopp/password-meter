@@ -19,7 +19,9 @@ O retorno da api é dado no formato:
 ----------------------------------------------------------------------------------------------------------------------------
 Mestre dos Códigos - Respostas:
 
-Q.1) Criar uma aplicação que utilize Orientação a Objetos, demonstrando no código o porquê da escolha de pelo menos 3 design patterns, e onde foi aplicado os principios SOLID na aplicação;
+Q.1) **Criar uma aplicação que utilize Orientação a Objetos, demonstrando no código o porquê da escolha de pelo menos 3 design patterns, e onde foi aplicado os principios SOLID na aplicação;**
+
+Resposta:
 
   1.	Design Patterns:
 ```    
@@ -37,15 +39,19 @@ Q.1) Criar uma aplicação que utilize Orientação a Objetos, demonstrando no c
     •	A classe MoreOf3Sequential e um exemplo que respeita o SRP, o OCP, LSP e o ISP. 
 ```    
 -----
-Q.4) Criar uma aplicação que faça uso da injeção de dependências, tanto de interfaces quanto classes concretas, com injeção de implementações especificas com base no ambiente em que a aplicação está rodando.
+Q.4) **Criar uma aplicação que faça uso da injeção de dependências, tanto de interfaces quanto classes concretas, com injeção de implementações especificas com base no ambiente em que a aplicação está rodando.**
+
+Resposta:
 ```
 •	A aplicação injeta as dependências da classe ScoreFacade, injetando através do uso de rótulos para diferenciar uma da outra, já que ambas são a mesma abstração;
 •	A aplicação injeta dependências de classes concretas nos façades DecrementalScoreFacade e IncrementalScoreFacade;
 •	Foram criados dois profiles, prod e dev, e para cada um, é injetado um tipo de dependência no façade DecrementalScoreFacade, sendo um definido através do arquivo .properties referente de cada profile um definido através da notação @Profile(vide as classes: AmericanLetterOnlyScoreCalculator e RussianLetterOnlyScoreCalculator)
 ```    
 -----
-Q.14) Criar uma funcionalidade que faça o uso de regex para validação e busca de informações dentro de entrada de dados fornecidas pelo usuário; 
-  Aplicação faz uso de regex para verificar os caracteres da senha informada, vide as classes: 
+Q.14) **Criar uma funcionalidade que faça o uso de regex para validação e busca de informações dentro de entrada de dados fornecidas pelo usuário; **
+
+Resposta:
+Aplicação faz uso de regex para verificar os caracteres da senha informada, vide as classes: 
 ```
  -	MoreOf3Sequential; 
  -	Consecutive;
