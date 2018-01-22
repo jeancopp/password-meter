@@ -16,25 +16,8 @@ O retorno da api é dado no formato:
   "descremental": Integer
 }
 ```
------------------------------------------------------------------------------------------------------------------------------
-Password score Calculation.
-
-Was developed with base on website: http://www.passwordmeter.com/
-To execute, do clone of the project and run in with maven.
-The application will run on port 8080 by default, and will can be access in http://localhost:8080/
-
-The api will be enabled for access in http://localhost:8080/password/score?pass=PASSWORD where PASSWORD needs to be infomated.
-The return of Api will be in the format:
-```
-{
-  "score": Integer(Range: 0-100),
-  "complexity": Enum("Muito Curta","Muito Fraca","Fraca","Boa","Forte","Muito Forte"),
-  "incremental": Integer,
-  "descremental": Integer
-}
-```
 ----------------------------------------------------------------------------------------------------------------------------
-Respostas às questões:
+Mestre dos Códigos - Respostas:
 
 Q.1) Criar uma aplicação que utilize Orientação a Objetos, demonstrando no código o porquê da escolha de pelo menos 3 design patterns, e onde foi aplicado os principios SOLID na aplicação;
 
