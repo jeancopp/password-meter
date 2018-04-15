@@ -15,8 +15,10 @@ public class Lista {
 	public void adicionar(Integer valor) {
 		Elemento novo = new Elemento(valor);
 		
+		if(fim == null) fim = novo;
+		
 		fim.setProximo(novo);
-		novo.setAnterior(novo);
+		novo.setAnterior(fim);
 		
 		if(comeco == null) comeco = novo;
 		
@@ -28,7 +30,10 @@ public class Lista {
 	
 	public Integer retornar(int indiceDoElemento) {
 		if( tamanho < indiceDoElemento ) return null;
-		return 0;
+		Elemento elementoBuscado = comeco;
+		for(int i = 0; i < indiceDoElemento; i++) elementoBuscado = elementoBuscado.getProximo();
+		
+		return elementoBuscado.getValor();
 	}
 
 	public Integer remover(int indiceDoElemento) {

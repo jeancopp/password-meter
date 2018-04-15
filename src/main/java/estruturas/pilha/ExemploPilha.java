@@ -9,8 +9,8 @@ public class ExemploPilha {
 		 * A estrutura de dados do tipo pilha é uma estrutura que permite acesso apenas ao último elemento.
 		 * 
 		 * A convenção em torno dessa estrutura de dados é que ela é acessada e manipulada através de dois métodos, o push e o pop.
-		 * O primeiro é terá por responsabilidade receber um valor e coloca-lô no topo da pilha.
-		 * Dessa forma, e apenas dessa nessa implementação, têm-se acesso à algum valor. 
+		 * O primeiro terá por responsabilidade receber um valor e coloca-lô no topo da pilha.
+		 * Dessa forma, e apenas dessa, para a implementação realizada, têm-se acesso à algum valor. 
 		 */
 		p.mostrarTopo();
 		
@@ -44,7 +44,7 @@ public class ExemploPilha {
 		 * 
 		 * Um ganho da pilha, frente a outras estrutura, é que o foco passa ser apenas no que está no topo, e pelo fato que há apenas um elemento abaixo do topo.
 		 * Retirou-se o elemento do topo para realizar a ação, só haverá um para tornar-se o novo topo. Tal ponto é importante de ressalva já que a estrutura Heap 
-		 * se assemelha-se, já que o topo é o elemento mais importante, mas é necessário avaliar os candidatos abaixo para definir qual será o próximo topo
+		 * se assemelha, já que o topo é o elemento mais importante, mas é necessário avaliar os candidatos abaixo para definir qual será o próximo topo
 		 */
 		
 		p.pop();
