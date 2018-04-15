@@ -7,7 +7,7 @@ public class ExemploLista {
 		 * A Lista talvez seja a estrutura de dados mais utilizada normalmente, 
 		 * por permitir trabalhar com uma grande quantidade de dados.
 		 * O limite dela é o tamanho de memória que houver disponível, havendo 
-		 * a possíbilidade de, dada a implementação, usar também a memória em disco.
+		 * a possibilidade de, dada a implementação, usar também a memória em disco.
 		 * 
 		 * Diferente d'uma estrutura clássica de vetor, onde o tamanho deverá ser previamente 
 		 * definido, a lista permitirá adicionarmos a quantidade de elementos necessários. 
