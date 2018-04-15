@@ -1,0 +1,8 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>br.com.coppieters</groupId>
+  <artifactId>estruturas</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <description>Resolução do exercício para o programa mestre dos códigos:
+7) Criar uma aplicação implementando estruturas de dados de arvore, listas e pilhas, explicando no código o porque da utilização de cada uma, e o ganho em relação a estruturas de dados semelhantes;</description>
+</project>
