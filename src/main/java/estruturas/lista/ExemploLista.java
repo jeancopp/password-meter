@@ -5,22 +5,24 @@ public class ExemploLista {
 	public static void main(String[] args) {
 		/* 
 		 * A Lista talvez seja a estrutura de dados mais utilizada normalmente, 
-		 * por permitir que trabalhar com uma grande quantidade de dados.
+		 * por permitir trabalhar com uma grande quantidade de dados.
 		 * O limite dela é o tamanho de memória que houver disponível, havendo 
-		 * a possíbilidade de, dada uma implementação, usar também a memória em disco.
-		 * Diferente d'uma estrutura clássica de vetor, onde o tamanho deverá ser préviamente 
+		 * a possíbilidade de, dada a implementação, usar também a memória em disco.
+		 * 
+		 * Diferente d'uma estrutura clássica de vetor, onde o tamanho deverá ser previamente 
 		 * definido, a lista permitirá adicionarmos a quantidade de elementos necessários. 
-		 * Porém, diferente do vetor clássico, é preciso percorrê-lá para acessar os elementos,
-		 * já que não obrigatóriamente os elementos estarão dispostos em sequência na memória.
-		 * Há implementações que há tratativas diferentes, obviamente, mas a idéia seguirá próxima.
+		 * Porém, diferente do vetor clássico, é preciso percorrê-la para acessar os elementos,
+		 * já que não obrigatoriamente os elementos estarão dispostos em sequência na memória.
+		 * Há implementações que terão tratativas diferentes, obviamente, mas a idéia seguirá próxima.
 		 * 
 		 * Na implementação abaixo, optou-se por usar um lista duplamente encadeada, de forma 
 		 * que cada elemento tem acesso rápido ao seguinte e ao anterior.
 		 * Essa é uma outra desvantagem, já que para armazenar um elemento é preciso dispor do 
-		 * espaço de memória do mesmo + referência ao anterior + referencia ao próximo, 
+		 * espaço de memória do mesmo + referência ao anterior + referência ao próximo, 
 		 * bem como outras referências usadas pela lista, como um ponteiro para o primeiro e para o último elemento.
 		 * 
-		 * Ou seja, o gasto é quantidade de elementos * (tamanho de memório preciso + duas referencias) + duas referencias
+		 * Ou seja, o gasto de memória é dado por:
+		 * 		quantidade de elementos * (tamanho de memório preciso + duas referências) + duas referências
 		 *  
 		 */
 		Lista lista = new Lista();
