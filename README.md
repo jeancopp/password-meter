@@ -41,6 +41,13 @@ Resposta:
 *	A aplicação injeta dependências de classes concretas nos façades DecrementalScoreFacade e IncrementalScoreFacade;
 *	Foram criados dois profiles, prod e dev, e para cada um, é injetado um tipo de dependência no façade DecrementalScoreFacade, sendo um definido através do arquivo .properties referente de cada profile um definido através da notação @Profile(vide as classes: AmericanLetterOnlyScoreCalculator e RussianLetterOnlyScoreCalculator)
 -----
+Q.7) **Criar uma aplicação implementando estruturas de dados de arvore, listas e pilhas, explicando no código o porque da utilização de cada uma, e o ganho em relação a estruturas de dados semelhantes;
+
+Resposta: 
+*	Foi criada uma aplicação para demonstrar as implementações, e a mesma está no branch mestredoscodigoexer7( https://github.com/jeancopp/password-meter/tree/mestredoscodigoexer7 ).
+*   Para verificar cada implementação há um pacote referente, bem com um arquivo com o exemplo, sendo chamado de ExemploEstrutura, ou seja, há um ExemploPilha, ExemploLista e um ExemploArvoreBinaria no projeto, cada um dentro de seu respectivo pacote.
+
+-----
 Q.14) **Criar uma funcionalidade que faça o uso de regex para validação e busca de informações dentro de entrada de dados fornecidas pelo usuário;**
 
 Resposta:
