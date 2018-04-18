@@ -7,6 +7,7 @@ import java.util.function.Function;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
 
 import br.com.coppieters.score.ScoreLabelEnum;
@@ -21,13 +22,20 @@ import br.com.coppieters.service.ScoreApplication;
 @Service
 public class ScoreFacade implements ScoreApplication<Map<String,String>>{
 
+	private List<Function<String, Integer>> incrementalScores;
+	private List<Function<String, Integer>> decrementalScores;
+	private MessageSource messageSource;
+
 	@Autowired
-	@Qualifier("IncrementalScore")
-	List<Function<String, Integer>> incrementalScores;
+	public ScoreFacade(
+		@Qualifier("IncrementalScore")	List<Function<String, Integer>> incrementalScores
+		,@Qualifier("DecrementalScore") List<Function<String, Integer>> decrementalScores
+		,MessageSource messageSource) {
+			this.incrementalScores = incrementalScores;
+			this.decrementalScores = decrementalScores;
+			this.messageSource = messageSource;
+	}
 	
-	@Autowired
-	@Qualifier("DecrementalScore")
-	List<Function<String, Integer>> decrementalScores;
 	
 	@Override
 	public Integer calculateDescrementalScoreWith(String password) {
@@ -48,7 +56,9 @@ public class ScoreFacade implements ScoreApplication<Map<String,String>>{
 
 	@Override
 	public String getLabelOfScore(Integer score,Integer incrementalScore, Integer decrementalScore) {
-		return ScoreLabelEnum.getLabel(score,incrementalScore,decrementalScore).getValue();
+		ScoreLabelEnum label = ScoreLabelEnum.getLabel(score,incrementalScore,decrementalScore);
+		System.out.println(label);
+		return label.getValue();
 	}
 	
 	private final int calculate(Collection<Function<String, Integer>> functions, String password){
