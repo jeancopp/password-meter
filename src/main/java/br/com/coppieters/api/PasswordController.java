@@ -35,7 +35,7 @@ public class PasswordController {
 	
 	@CrossOrigin("*")
 	@RequestMapping(method = RequestMethod.GET, value = "/score",  produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> getScore(@RequestParam(name = "pass", required = true) String pass){
+	public ResponseEntity<?> getScore(@RequestParam(name = "pass", required = true) String pass, @RequestParam(name = "lang", required = false) String lang){
 		LOG.info("Inicio - Password: " + pass);
 		try{
 			return new ResponseEntity<>(application.calculateScore(pass,responseDtoBuilder), HttpStatus.OK);
