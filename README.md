@@ -44,7 +44,7 @@ Resposta:
 Q.7) **Criar uma aplicação implementando estruturas de dados de arvore, listas e pilhas, explicando no código o porque da utilização de cada uma, e o ganho em relação a estruturas de dados semelhantes;**
 
 Resposta: 
-*	Foi criada uma aplicação para demonstrar as implementações, e a mesma está no branch mestredoscodigoexer7( https://github.com/jeancopp/password-meter/tree/mestredoscodigoexer7 ).
+*	Foi criada uma aplicação para demonstrar as implementações, e a mesma está no branch mestredoscodigoexer7( https://github.com/jeancopp/password-meter/tree/exercicio7 ).
 *   Para verificar cada implementação há um pacote referente, bem com um arquivo com o exemplo, sendo chamado de ExemploEstrutura, ou seja, há um ExemploPilha, ExemploLista e um ExemploArvoreBinaria no projeto, cada um dentro de seu respectivo pacote.
 
 -----
