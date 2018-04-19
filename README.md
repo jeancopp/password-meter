@@ -48,6 +48,17 @@ Resposta:
 *   Para verificar cada implementação há um pacote referente, bem com um arquivo com o exemplo, sendo chamado de ExemploEstrutura, ou seja, há um ExemploPilha, ExemploLista e um ExemploArvoreBinaria no projeto, cada um dentro de seu respectivo pacote.
 
 -----
+Q.9) **Criar uma aplicação que faça uso de internacionalização e localização em interfaces e APIs;**
+
+Resposta: 
+*	A aplicação que está nesse branch foi intenacionalizada, de forma que responde em português e em inglês.
+*	Para realizar o teste da interface, foi usado um plug-in no chrome, o Quick Language Switcher, que permite trocar o idioma com facilidade. 
+		Plug-in: https://chrome.google.com/webstore/detail/quick-language-switcher/pmjbhfmaphnpbehdanbjphdcniaelfie
+*	Para realizar o teste via api, é preciso colocar no cabeçalho qual idioma é aceito, ou seja, "Accept-Language"="en para respostas em inglês. 
+* 	Por default, as respostas serão em português
+
+
+-----
 Q.14) **Criar uma funcionalidade que faça o uso de regex para validação e busca de informações dentro de entrada de dados fornecidas pelo usuário;**
 
 Resposta:
