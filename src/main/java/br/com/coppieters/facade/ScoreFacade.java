@@ -2,11 +2,13 @@ package br.com.coppieters.facade;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.function.Function;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.context.MessageSource;
 import org.springframework.stereotype.Service;
 
 import br.com.coppieters.score.ScoreLabelEnum;
@@ -21,13 +23,20 @@ import br.com.coppieters.service.ScoreApplication;
 @Service
 public class ScoreFacade implements ScoreApplication<Map<String,String>>{
 
+	private List<Function<String, Integer>> incrementalScores;
+	private List<Function<String, Integer>> decrementalScores;
+	private MessageSource messageSource;
+
 	@Autowired
-	@Qualifier("IncrementalScore")
-	List<Function<String, Integer>> incrementalScores;
+	public ScoreFacade(
+		@Qualifier("IncrementalScore")	List<Function<String, Integer>> incrementalScores
+		,@Qualifier("DecrementalScore") List<Function<String, Integer>> decrementalScores
+		,MessageSource messageSource) {
+			this.incrementalScores = incrementalScores;
+			this.decrementalScores = decrementalScores;
+			this.messageSource = messageSource;
+	}
 	
-	@Autowired
-	@Qualifier("DecrementalScore")
-	List<Function<String, Integer>> decrementalScores;
 	
 	@Override
 	public Integer calculateDescrementalScoreWith(String password) {
@@ -47,13 +56,20 @@ public class ScoreFacade implements ScoreApplication<Map<String,String>>{
 	}
 
 	@Override
-	public String getLabelOfScore(Integer score,Integer incrementalScore, Integer decrementalScore) {
-		return ScoreLabelEnum.getLabel(score,incrementalScore,decrementalScore).getValue();
+	public ScoreLabelEnum getScore(Integer score,Integer incrementalScore, Integer decrementalScore) {
+		return ScoreLabelEnum.getLabel(score,incrementalScore,decrementalScore);
 	}
 	
 	private final int calculate(Collection<Function<String, Integer>> functions, String password){
 		return functions.stream()
 				.mapToInt( f -> f.apply(password) )
 				.sum();
+	}
+
+
+	@Override
+	public String translateScore(ScoreLabelEnum scoreLabel, Locale locale) {
+		String score = messageSource.getMessage(scoreLabel.getValue(),null, locale);
+		return score;
 	}
 }

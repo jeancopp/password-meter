@@ -1,23 +1,23 @@
 <!DOCTYPE html>
-<html>
+<html th:lang="${#locale.language}" xmlns:th="http://www.thymeleaf.org" xmlns="http://www.w3.org/1999/xhtml">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-<title>Password Meter</title>
+<title th:text="#{title}"></title>
 <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" />
 </head>
 <body>
 	<form>
 		<div class="container">
 			<fieldset>
-				<legend>AVALIADOR DE SEGURANÇA DE SENHA</legend>
+				<legend th:text="#{legend}"></legend>
 				<div class="jumbotron" style="margin-top: 50px;">
 					<div class="row">
 						<input type="password" class="form-control"
-							placeholder="Senha" id="password" name="password" />
+							th:placeholder="#{password.placeholder}" id="password" name="password" />
 					</div>
 					<div class="row">
 						<span class="label label-default" id="score">0%</span> 
-						<span class="label label-danger" id="complexity">Muito Curta</span>
+						<span class="label label-danger" id="complexity" th:text="#{complexity.tooshort}"></span>
 					</div>
 				</div>
 			</fieldset>
