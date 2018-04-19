@@ -1,5 +1,6 @@
 package br.com.coppieters.api;
 
+import java.util.Locale;
 import java.util.Map;
 
 import org.apache.log4j.Logger;
@@ -35,10 +36,10 @@ public class PasswordController {
 	
 	@CrossOrigin("*")
 	@RequestMapping(method = RequestMethod.GET, value = "/score",  produces = MediaType.APPLICATION_JSON_VALUE)
-	public ResponseEntity<?> getScore(@RequestParam(name = "pass", required = true) String pass, @RequestParam(name = "lang", required = false) String lang){
+	public ResponseEntity<?> getScore(@RequestParam(name = "pass", required = true) String pass, Locale locale){
 		LOG.info("Inicio - Password: " + pass);
 		try{
-			return new ResponseEntity<>(application.calculateScore(pass,responseDtoBuilder), HttpStatus.OK);
+			return new ResponseEntity<>(application.calculateScore(pass,responseDtoBuilder,locale), HttpStatus.OK);
 		}catch(Exception e){
 			LOG.info("Erro inexperado",e);
 			return new ResponseEntity<>(e,HttpStatus.INTERNAL_SERVER_ERROR);

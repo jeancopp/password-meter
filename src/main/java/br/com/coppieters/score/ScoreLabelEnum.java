@@ -10,12 +10,12 @@ import java.util.List;
  *
  */
 public enum ScoreLabelEnum {
-	TooShort(0,"Muito Curta")
-	,VeryWeak(20,"Muito Fraca")
-	,Weak(40,"Fraca")
-	,Good(60,"Boa")
-	,Strong(80,"Forte")
-	,VeryStrong(100,"Muito Forte");
+	TooShort(0,"complexity.tooshort")
+	,VeryWeak(20,"complexity.veryweak")
+	,Weak(40,"complexity.weak")
+	,Good(60,"complexity.good")
+	,Strong(80,"complexity.strong")
+	,VeryStrong(100,"complexity.verystrong");
 	
 	private String value;
 	private int limit;

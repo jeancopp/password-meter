@@ -2,6 +2,7 @@ package br.com.coppieters.facade;
 
 import java.util.Collection;
 import java.util.List;
+import java.util.Locale;
 import java.util.Map;
 import java.util.function.Function;
 
@@ -55,15 +56,20 @@ public class ScoreFacade implements ScoreApplication<Map<String,String>>{
 	}
 
 	@Override
-	public String getLabelOfScore(Integer score,Integer incrementalScore, Integer decrementalScore) {
-		ScoreLabelEnum label = ScoreLabelEnum.getLabel(score,incrementalScore,decrementalScore);
-		System.out.println(label);
-		return label.getValue();
+	public ScoreLabelEnum getScore(Integer score,Integer incrementalScore, Integer decrementalScore) {
+		return ScoreLabelEnum.getLabel(score,incrementalScore,decrementalScore);
 	}
 	
 	private final int calculate(Collection<Function<String, Integer>> functions, String password){
 		return functions.stream()
 				.mapToInt( f -> f.apply(password) )
 				.sum();
+	}
+
+
+	@Override
+	public String translateScore(ScoreLabelEnum scoreLabel, Locale locale) {
+		String score = messageSource.getMessage(scoreLabel.getValue(),null, locale);
+		return score;
 	}
 }
